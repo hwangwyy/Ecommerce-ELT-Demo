@@ -9,7 +9,7 @@ The technologies, tools, concepts that this project will use:
 - Automate Pipeline: Apache Airflow
 - Database Schema: Star Schema
 - Data Build Tool: dbt
-- BI tools: Power BI or Streamlit
+- BI tools: Streamlit
 # How the project work
 1. Download the dataset from kaggle using kagglehub.
 2. Upload the data automatically to data lake (Amazon S3)
@@ -18,7 +18,10 @@ The technologies, tools, concepts that this project will use:
 5. Use dbt for transformations at Silver and Gold layer
 6. Load datas into BI tools
 # How to run  the project
-1. Install dependencies
-```terminaloutput
+1. Set up python, env
+```shell
+python -m venv .venv
+source .venv/bin/activate # On Windows: .venv/Scripts/activate
 pip install -r requirements.txt
+cp .env.exmaple .env
 ```
