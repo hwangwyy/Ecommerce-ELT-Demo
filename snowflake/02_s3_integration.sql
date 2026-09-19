@@ -1,0 +1,19 @@
+USE ROLE ACCOUNTADMIN;
+
+USE DATABASE ECOMMERCE;
+
+CREATE STORAGE INTEGRATION IF NOT EXISTS
+    AMAZON_S3
+    TYPE = EXTERNAL_STAGE
+    ENABLED = TRUE
+    STORAGE_PROVIDER = 'S3'
+    STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::406382424639:role/snowflake-ecommerce-role'
+    STORAGE_ALLOWED_LOCATIONS = ('s3://ecommerce-dataset-406382424639-us-east-1-an/csv');
+
+CREATE STAGE IF NOT EXISTS S3_STAGE
+    STORAGE_INTEGRATION = AMAZON_S3
+    URL = 's3://ecommerce-dataset-406382424639-us-east-1-an/csv'
+    FILE_FORMAT = (
+        TYPE = CSV
+        SKIP_HEADER = 1
+    );
